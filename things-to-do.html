@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Things to Do in Frederick, MD | Noah & Adriana-Isabela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f9f6f1;
+      --warm-white: #fefcf8;
+      --gold: #c5a96b;
+      --gold-light: #d4bc8a;
+      --dark: #2a2118;
+      --charcoal: #3d3028;
+      --text: #4a3f35;
+      --text-light: #7a6e64;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 70px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(197,169,107,0.2);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--gold);
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold); }
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-social { display: flex; gap: 14px; }
+    .nav-social a img { width: 22px; height: 22px; opacity: 0.6; transition: opacity 0.3s; }
+    .nav-social a:hover img { opacity: 1; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: all 0.3s; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding-top: 70px;
+      background: var(--dark);
+      text-align: center;
+      padding-bottom: 60px;
+    }
+
+    .page-hero-inner {
+      padding: 70px 40px 0;
+    }
+
+    .page-hero .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .page-hero p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 28px auto;
+      opacity: 0.6;
+    }
+
+    /* ── SECTION COMMON ── */
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .category-section {
+      padding: 80px 40px;
+    }
+
+    .category-section:nth-child(even) {
+      background: var(--warm-white);
+    }
+
+    .category-section:nth-child(odd) {
+      background: var(--cream);
+    }
+
+    .category-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .category-header {
+      margin-bottom: 48px;
+    }
+
+    .category-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(197,169,107,0.2);
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(42,33,24,0.10);
+      transform: translateY(-3px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e8dfd4 0%, #d4c9bb 100%);
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #e8dfd4 0%, #d4c9bb 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--gold);
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-body h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .card-address {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .card-body p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
+
+    .card-link {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .card-link:hover { color: var(--gold); }
+
+    /* ── HIGHLIGHT BANNER ── */
+    .highlight-banner {
+      background: var(--dark);
+      padding: 70px 40px;
+      text-align: center;
+    }
+
+    .highlight-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .highlight-banner p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1.5px solid var(--gold);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn:hover { background: var(--gold); color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      border-top: 1px solid rgba(197,169,107,0.15);
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    .footer-back-top {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-back-top:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links, .nav-social { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: #fff;
+        padding: 24px 30px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(197,169,107,0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .hamburger { display: flex; }
+      .category-section { padding: 60px 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img
+        src="https://static.wixstatic.com/media/a896d9_3642d8a998ca4ecab7ed1f9c89cb00ef.png/v1/fill/w_84,h_84,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a896d9_3642d8a998ca4ecab7ed1f9c89cb00ef.png"
+        alt="Monogram"
+        onerror="this.style.display='none'"
+      />
+      <span class="nav-logo-text">Noah John &amp; Adriana-Isabela</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeY7SpA51gyO4FJGoG95E5wFgPjgtzdvhIIL12Yrv_6zKXeWw/viewform?usp=dialog" target="_blank">RSVP</a></li>
+      <li><a href="things-to-do.html" class="active">Things to Do</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#details">Wedding Details</a></li>
+      <li><a href="https://www.amazon.com/wedding/guest-view/2TU30ZR5R7V2T" target="_blank">Registry</a></li>
+    </ul>
+
+    <div class="nav-social">
+      <a href="#"><img src="https://static.wixstatic.com/media/4057345bcf57474b96976284050c00df.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4057345bcf57474b96976284050c00df.png" alt="Facebook" /></a>
+      <a href="#"><img src="https://static.wixstatic.com/media/9e47c827082f40bdb54d0cd16c3b28f6.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9e47c827082f40bdb54d0cd16c3b28f6.png" alt="Pinterest" /></a>
+      <a href="#"><img src="https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e1aa082f7c0747168d9cf43e77046142.png" alt="Instagram" /></a>
+    </div>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="section-label">Frederick, Maryland · December 2026</span>
+      <h1>Things to Do</h1>
+      <div class="hero-divider"></div>
+      <p>Frederick's historic downtown is walkable, charming, and full of great food, shops, and sights — perfect for exploring before or after the celebration.</p>
+    </div>
+  </div>
+
+  <!-- RESTAURANTS -->
+  <section class="category-section">
+    <div class="category-inner">
+      <div class="category-header reveal">
+        <span class="section-label">Eat &amp; Drink</span>
+        <h2>Restaurants</h2>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🍽️</div>
+          <!-- swap: <img src="images/volt.jpg" alt="Volt" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Volt</h3>
+            <p class="card-address">228 N Market St</p>
+            <p>Chef Bryan Voltaggio's flagship restaurant, set inside a stunning Victorian mansion. Seasonal, upscale American cuisine — a special-occasion favourite and a Frederick landmark.</p>
+            <a href="https://www.voltrestaurant.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🍺</div>
+          <!-- swap: <img src="images/brewers-alley.jpg" alt="Brewer's Alley" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Brewer's Alley</h3>
+            <p class="card-address">124 N Market St</p>
+            <p>Frederick's original brewpub, housed in a beautifully restored 1890s city hall. Craft beers brewed on-site, hearty American food, and a lively atmosphere great for groups.</p>
+            <a href="https://www.brewers-alley.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🍷</div>
+          <!-- swap: <img src="images/wine-kitchen.jpg" alt="The Wine Kitchen" class="card-img" /> -->
+          <div class="card-body">
+            <h3>The Wine Kitchen on the Creek</h3>
+            <p class="card-address">50 Carroll Creek Linear Park</p>
+            <p>A cosy wine bar and restaurant right on Carroll Creek. Perfect for a pre-wedding dinner with curated small plates, an excellent wine list, and lovely creek views.</p>
+            <a href="https://www.thewinekitchen.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🥘</div>
+          <!-- swap: <img src="images/ayse.jpg" alt="Ayse Meze Lounge" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Ayse Meze Lounge</h3>
+            <p class="card-address">103 N Market St</p>
+            <p>Turkish and Mediterranean small plates in a warm, intimate setting. Great for sharing — the mezze spread is perfect for a relaxed evening with the group.</p>
+            <a href="https://www.aysemeze.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🍕</div>
+          <!-- swap: <img src="images/pistarro.jpg" alt="Pistarro's" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Pistarro's</h3>
+            <p class="card-address">88 S Market St</p>
+            <p>A neighbourhood favourite for wood-fired pizza and rustic Italian fare. Casual, affordable, and consistently delicious — a solid pick for the whole family.</p>
+            <a href="https://www.pistarros.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🥂</div>
+          <!-- swap: <img src="images/isabella.jpg" alt="Isabella's Taverna" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Isabella's Taverna &amp; Tapas Bar</h3>
+            <p class="card-address">44 N Market St</p>
+            <p>Spanish tapas and sangria in a festive downtown spot. Fun for a group dinner — the small-plates format makes it easy to try a bit of everything.</p>
+            <a href="https://www.isabellastaverna.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COFFEE & DRINKS -->
+  <section class="category-section">
+    <div class="category-inner">
+      <div class="category-header reveal">
+        <span class="section-label">Morning &amp; Afternoon</span>
+        <h2>Coffee &amp; Casual Bites</h2>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">☕</div>
+          <!-- swap: <img src="images/beans-belfry.jpg" alt="Beans in the Belfry" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Beans in the Belfry</h3>
+            <p class="card-address">122 W Patrick St</p>
+            <p>Coffee shop set inside a converted 1881 Baptist church — stained glass, soaring ceilings, and great espresso. One of Frederick's most unique and beloved spots.</p>
+            <a href="https://www.beansinthebelfry.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🫖</div>
+          <!-- swap: <img src="images/frederick-coffee.jpg" alt="Frederick Coffee Co." class="card-img" /> -->
+          <div class="card-body">
+            <h3>Frederick Coffee Co. &amp; Café</h3>
+            <p class="card-address">1 E Church St</p>
+            <p>A welcoming neighbourhood café right in the heart of downtown. Locally roasted coffee, fresh pastries, and a relaxed vibe — a great spot to start the day.</p>
+            <a href="https://www.frederickcoffeeco.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🍎</div>
+          <!-- swap: <img src="images/mccutcheons.jpg" alt="McCutcheon's" class="card-img" /> -->
+          <div class="card-body">
+            <h3>McCutcheon's Market</h3>
+            <p class="card-address">13 S Wisner St</p>
+            <p>A Frederick institution since 1938. Famous for apple butter, cider, and preserves made on-site. Grab a homemade snack, a jar to take home, or a fresh sandwich at the deli counter.</p>
+            <a href="https://www.mccutcheons.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOLIDAY HIGHLIGHT -->
+  <div class="highlight-banner">
+    <span class="section-label" style="color: var(--gold-light);">December in Frederick</span>
+    <h2>Carroll Creek Holiday Lights</h2>
+    <div class="hero-divider"></div>
+    <p>Each December, Carroll Creek Linear Park is transformed with thousands of lights, decorated trees, and festive displays stretching along the waterway through downtown. It's free, walkable, and absolutely worth an evening stroll.</p>
+    <a href="https://www.frederickattractions.org" target="_blank" class="btn">Explore Frederick Events →</a>
+  </div>
+
+  <!-- SHOPPING & SIGHTS -->
+  <section class="category-section">
+    <div class="category-inner">
+      <div class="category-header reveal">
+        <span class="section-label">Explore</span>
+        <h2>Shopping &amp; Sights</h2>
+      </div>
+      <div class="cards-grid">
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">📚</div>
+          <!-- swap: <img src="images/curious-iguana.jpg" alt="Curious Iguana" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Curious Iguana</h3>
+            <p class="card-address">12 N Market St</p>
+            <p>Frederick's beloved independent bookshop, right on Market Street. Thoughtfully curated shelves, local author picks, and a warm atmosphere — a perfect rainy-day stop.</p>
+            <a href="https://www.curiousicebook.com" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🏛️</div>
+          <!-- swap: <img src="images/civil-war-museum.jpg" alt="National Museum of Civil War Medicine" class="card-img" /> -->
+          <div class="card-body">
+            <h3>National Museum of Civil War Medicine</h3>
+            <p class="card-address">48 E Patrick St</p>
+            <p>A fascinating and unique museum telling the story of medical care during the Civil War. Frederick played a significant role as a hospital town — a great visit for history lovers.</p>
+            <a href="https://www.civilwarmed.org" target="_blank" class="card-link">Visit Website →</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-img-placeholder">🛍️</div>
+          <!-- swap: <img src="images/market-street.jpg" alt="Downtown Frederick" class="card-img" /> -->
+          <div class="card-body">
+            <h3>Historic Downtown Shopping</h3>
+            <p class="card-address">N &amp; S Market St + Patrick St</p>
+            <p>Stroll Frederick's walkable historic district — antique shops, boutiques, art galleries, and gift stores line the brick sidewalks. Perfect for an afternoon of relaxed browsing before the big day.</p>
+            <a href="https://www.downtownfrederick.org" target="_blank" class="card-link">Downtown Guide →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-back-top">↑ Back to Top</a><br/>
+    <p>© 2026 by Noah &amp; Adriana Isabela &nbsp;·&nbsp; <a href="index.html">← Back to Main Site</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noah John & Adriana-Isabela | 12.05.26</title>
+  <link rel="preconnect" href ="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f9f6f1;
+      --warm-white: #fefcf8;
+      --gold: #c5a96b;
+      --gold-light: #d4bc8a;
+      --dark: #2a2118;
+      --charcoal: #3d3028;
+      --text: #4a3f35;
+      --text-light: #7a6e64;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 70px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(197,169,107,0.2);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--gold);
+    }
+
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-social {
+      display: flex;
+      gap: 14px;
+    }
+
+    .nav-social a img {
+      width: 22px;
+      height: 22px;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .nav-social a:hover img { opacity: 1; }
+
+    /* ── HAMBURGER (mobile) ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--dark);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: -60px;
+      background-image: url('https://static.wixstatic.com/media/d03b62_3c1950cc5dca4d3f9c8522819b6d96c1~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d03b62_3c1950cc5dca4d3f9c8522819b6d96c1~mv2.jpg');
+      background-size: cover;
+      background-position: center;
+      /* swap the src above for your own photo: background-image: url('images/hero.jpg'); */
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(30,20,10,0.30) 0%,
+        rgba(30,20,10,0.20) 50%,
+        rgba(30,20,10,0.45) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .hero-names {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 28px);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.95;
+    }
+
+    .hero-date {
+      font-family: var(--font-display);
+      font-size: clamp(60px, 10vw, 130px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.25);
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: rgba(255,255,255,0.6);
+      margin: 28px auto;
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeInUp 1.5s ease 1.5s both;
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-arrow::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      animation: scrollLine 1.8s ease infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    /* ── ABOUT SECTION ── */
+    #about {
+      background: var(--warm-white);
+      padding: 100px 40px;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      width: 100%;
+      max-width: 520px;
+      height: 500px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      /* swap for your photo: src="images/couple.jpg" */
+    }
+
+    .about-photo::before {
+      content: '';
+      position: absolute;
+      top: -16px; left: -16px;
+      right: 16px; bottom: 16px;
+      border: 1px solid var(--gold);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .about-photo img { position: relative; z-index: 1; }
+
+    .about-text {
+      padding: 20px 0;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .about-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-light);
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1.5px solid var(--gold);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      background: var(--cream);
+      padding: 80px 0;
+    }
+
+    .gallery-header {
+      text-align: center;
+      padding: 0 40px 60px;
+    }
+
+    .gallery-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    /* Masonry-style gallery matching Wix layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      padding: 0 6px;
+    }
+
+    .gallery-grid .g-item {
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-grid .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .gallery-grid .g-item:hover img { transform: scale(1.04); }
+
+    /* Row heights */
+    .gallery-grid .g-item.half  { height: 320px; }
+    .gallery-grid .g-item.full  { grid-column: span 2; height: 380px; }
+    .gallery-grid .g-item.tall  { height: 480px; }
+
+    /* ── PARALLAX BANNER ── */
+    #banner {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: -80px;
+      background-image: url('https://static.wixstatic.com/media/d03b62_bb955ee1d69947cc819046c809bdb0ea~mv2.jpg/v1/fill/w_1920,h_967,q_90,enc_avif,quality_auto/d03b62_bb955ee1d69947cc819046c809bdb0ea~mv2.jpg');
+      background-size: cover;
+      background-position: center 10%;
+      /* swap for your own: background-image: url('images/banner.jpg'); */
+      will-change: transform;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(20,15,10,0.30);
+    }
+
+    /* ── QUOTE SECTION ── */
+    #quote {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-bg {
+      position: absolute;
+      inset: -80px;
+      background-image: url('https://static.wixstatic.com/media/d03b62_7d7d6697606043bebb579537b4161d47~mv2.jpeg/v1/fill/w_1920,h_1280,q_85,enc_avif,quality_auto/d03b62_7d7d6697606043bebb579537b4161d47~mv2.jpeg');
+      background-size: cover;
+      background-position: center;
+      /* swap: background-image: url('images/quote-bg.jpg'); */
+      will-change: transform;
+    }
+
+    .quote-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,10,5,0.60);
+    }
+
+    .quote-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #fff;
+    }
+
+    .quote-mark {
+      font-family: var(--font-display);
+      font-size: 80px;
+      line-height: 0.5;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2.5vw, 26px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 28px;
+    }
+
+    .quote-ref {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    /* ── WEDDING DETAILS ── */
+    #details {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .details-bg {
+      position: absolute;
+      inset: -80px;
+      background-image: url('images/bottom.jpg');
+      background-size: cover;
+      background-position: center;
+      /* swap: background-image: url('images/details-bg.jpg'); */
+      will-change: transform;
+    }
+
+    .details-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,10,5,0.68);
+    }
+
+    .details-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 40px;
+      color: #fff;
+    }
+
+    .details-content .section-label {
+      color: var(--gold-light);
+    }
+
+    .details-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      margin-bottom: 60px;
+      color: #fff;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .detail-card {
+      border-left: 1.5px solid var(--gold);
+      padding-left: 28px;
+    }
+
+    .detail-card .detail-icon {
+      font-size: 24px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .detail-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .detail-card p {
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .detail-card .detail-time {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Q&A SECTION ── */
+    #faq {
+      background: var(--warm-white);
+      padding: 100px 40px;
+    }
+
+    .faq-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .faq-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(197,169,107,0.3);
+      padding: 28px 0;
+    }
+
+    .faq-item:first-of-type {
+      border-top: 1px solid rgba(197,169,107,0.3);
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 14px;
+    }
+
+    .faq-answer {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text-light);
+    }
+
+    .faq-answer em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .footer-back-top {
+      display: inline-block;
+      margin-bottom: 20px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-back-top:hover { color: var(--gold); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 28px;
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+
+      .nav-links, .nav-social { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: #fff;
+        padding: 24px 30px;
+        gap: 20px;
+        border-bottom: 1px solid rgba(197,169,107,0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+      .hamburger { display: flex; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-photo::before { display: none; }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .gallery-grid .g-item.half { height: 220px; }
+      .gallery-grid .g-item.full { height: 260px; }
+      .gallery-grid .g-item.tall { height: 320px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">
+      <img
+        src="https://static.wixstatic.com/media/a896d9_3642d8a998ca4ecab7ed1f9c89cb00ef.png/v1/fill/w_84,h_84,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a896d9_3642d8a998ca4ecab7ed1f9c89cb00ef.png"
+        alt="Monogram"
+        onerror="this.style.display='none'"
+      />
+      <!-- swap logo: <img src="images/logo.png" alt="Monogram" /> -->
+      <span class="nav-logo-text">Noah John &amp; Adriana-Isabela</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeY7SpA51gyO4FJGoG95E5wFgPjgtzdvhIIL12Yrv_6zKXeWw/viewform?usp=dialog" target="_blank">RSVP</a></li>
+      <li><a href="things-to-do.html">Things to Do</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#details">Wedding Details</a></li>
+      <li><a href="https://www.amazon.com/wedding/guest-view/2TU30ZR5R7V2T" target="_blank">Registry</a></li>
+    </ul>
+
+    <div class="nav-social">
+      <a href="#"><img src="https://static.wixstatic.com/media/4057345bcf57474b96976284050c00df.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4057345bcf57474b96976284050c00df.png" alt="Facebook" /></a>
+      <a href="#"><img src="https://static.wixstatic.com/media/9e47c827082f40bdb54d0cd16c3b28f6.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9e47c827082f40bdb54d0cd16c3b28f6.png" alt="Pinterest" /></a>
+      <a href="#"><img src="https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_35,h_35,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e1aa082f7c0747168d9cf43e77046142.png" alt="Instagram" /></a>
+    </div>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" style="animation: fadeInUp 1.2s ease 0.3s both;">
+      <p class="hero-names">Noah John &amp; Adriana-Isabela</p>
+      <div class="hero-divider"></div>
+      <h1 class="hero-date">12 . 05 . 26</h1>
+      <div class="hero-divider"></div>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-photo reveal">
+        <img
+          src="https://static.wixstatic.com/media/d03b62_151408c5292a4e8dbb79c68d81ae4bdc~mv2.jpeg/v1/crop/x_561,y_660,w_882,h_857/fill/w_573,h_557,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/E45D2977-0BC9-4D76-9E39-06B9C5F67818_1_102_o.jpeg"
+          alt="Noah & Adriana-Isabela"
+          onerror="this.src='https://via.placeholder.com/520x500/f0ebe3/c5a96b?text=Photo'"
+        />
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">We're so excited...</span>
+        <h2>Time to get married!</h2>
+        <p>Noah and Adriana-Isabela are ecstatic to celebrate the greatest moment in their lives thus far. We are bringing together two of the biggest families west of the Mississippi and its going to get rowdy. Can't wait to see you there!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeY7SpA51gyO4FJGoG95E5wFgPjgtzdvhIIL12Yrv_6zKXeWw/viewform?usp=dialog" target="_blank" class="btn">RSVP Here</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <span class="section-label">Snapshots of Love!</span>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Row 1: two halves -->
+      <div class="g-item half" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_6511e5a8c86b480fb48f8f3934f4a1ba~mv2.jpeg/v1/fit/w_960,h_638,q_90,enc_avif,quality_auto/d03b62_6511e5a8c86b480fb48f8f3934f4a1ba~mv2.jpeg" alt="Photo 1" />
+      </div>
+      <div class="g-item half" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_186bf13dfe1440179dd0cba82c7cdec1~mv2.jpeg/v1/fit/w_960,h_636,q_90,enc_avif,quality_auto/d03b62_186bf13dfe1440179dd0cba82c7cdec1~mv2.jpeg" alt="Photo 2" />
+      </div>
+      <!-- Row 2: full width -->
+      <div class="g-item full" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_0f56ab66b0484294ab781a05a3da7631~mv2.jpeg/v1/fit/w_1920,h_1276,q_90,enc_avif,quality_auto/d03b62_0f56ab66b0484294ab781a05a3da7631~mv2.jpeg" alt="Photo 3" />
+      </div>
+      <!-- Row 3: portrait + landscape -->
+      <div class="g-item tall" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_f66049567ad84da0b0b315d2d6dadb51~mv2.jpeg/v1/fit/w_960,h_1450,q_90,enc_avif,quality_auto/d03b62_f66049567ad84da0b0b315d2d6dadb51~mv2.jpeg" alt="Photo 4" />
+      </div>
+      <div class="g-item tall" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_0ceed7f12d1d43ad91ee29745beb7565~mv2.jpeg/v1/fit/w_960,h_638,q_90,enc_avif,quality_auto/d03b62_0ceed7f12d1d43ad91ee29745beb7565~mv2.jpeg" alt="Photo 5" />
+      </div>
+      <!-- Row 4: full width -->
+      <div class="g-item full" onclick="openLightbox(this)">
+        <img src="https://static.wixstatic.com/media/d03b62_d4942d1963944a019555dfc242ddf9dd~mv2.jpeg/v1/fit/w_1920,h_1276,q_90,enc_avif,quality_auto/d03b62_d4942d1963944a019555dfc242ddf9dd~mv2.jpeg" alt="Photo 6" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Q&A -->
+  <section id="faq">
+    <div class="faq-inner">
+      <div class="faq-header reveal">
+        <span class="section-label">Frequently Asked Questions</span>
+        <h2>What You Need to Know</h2>
+      </div>
+
+      <div class="faq-item reveal">
+        <p class="faq-question">What is the dress code?</p>
+        <p class="faq-answer">
+          The dress code is <em>formal / semi-formal</em> — think suits, tuxedos, gowns, and cocktail dresses. Since the ceremony is a <em>Catholic Mass</em>, we kindly ask that all guests dress modestly out of respect for the sacred space. For women, this means covering your shoulders (a wrap, shawl, or sleeved dress works beautifully). Please avoid anything too short or low-cut for the church — you're welcome to change or layer for the reception afterward!
+        </p>
+      </div>
+
+      <div class="faq-item reveal">
+        <p class="faq-question">When should I arrive for the ceremony?</p>
+        <p class="faq-answer">
+          Please plan to be seated at <em>Saint John the Evangelist by 11:45 AM</em>. The Mass will begin promptly at 12:00 PM. Arriving early gives you time to find a seat and enjoy the music before things get started.
+        </p>
+      </div>
+
+      <div class="faq-item reveal">
+        <p class="faq-question">Is there parking at the venues?</p>
+        <p class="faq-answer">
+          Yes — the church is located in downtown Frederick, and street parking is available. <em>Springfield Manor</em> has on-site parking available for all guests. If you're staying nearby, we also recommend carpooling so everyone can enjoy the celebration without worry.
+        </p>
+      </div>
+
+      <div class="faq-item reveal">
+        <p class="faq-question">Can I take photos during the ceremony?</p>
+        <p class="faq-answer">
+          We ask that guests refrain from taking photos during the Mass and ceremony out of respect for the liturgy and our professional photographer. Please enjoy the moment fully — we'll have plenty of photos to share afterward! Feel free to take as many photos as you like at the reception.
+        </p>
+      </div>
+
+      <div class="faq-item reveal">
+        <p class="faq-question">Do you have any dietary accommodations?</p>
+        <p class="faq-answer">
+          Yes! Please let us know of any dietary restrictions or allergies when you <em>RSVP</em> so we can make sure you're well taken care of at the reception dinner.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARALLAX BANNER -->
+  <section id="banner">
+    <div class="banner-bg" id="bannerBg"></div>
+    <div class="banner-overlay"></div>
+  </section>
+
+  <!-- QUOTE -->
+  <section id="quote" style="padding: 0;">
+    <div class="quote-bg" id="quoteBg"></div>
+    <div class="quote-overlay"></div>
+    <div class="quote-content reveal">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">
+        So I commend the enjoyment of life, because there is nothing better for a person under the sun than to eat and drink and be glad. Then joy will accompany them in their toil all the days of the life God has given them under the sun.
+      </p>
+      <span class="quote-ref">Ecclesiastes 8:15</span>
+    </div>
+  </section>
+
+  <!-- WEDDING DETAILS -->
+  <section id="details">
+    <div class="details-bg" id="detailsBg"></div>
+    <div class="details-overlay"></div>
+    <div class="details-content">
+      <span class="section-label">Wedding Details</span>
+      <h2>Celebration of Holy Matrimony</h2>
+      <div class="details-grid">
+        <div class="detail-card reveal">
+          <span class="detail-icon">⛪</span>
+          <h3>The Ceremony</h3>
+          <p>
+            Saint John the Evangelist<br/>
+            Frederick, MD
+          </p>
+          <p class="detail-time">Mass · 12:00 PM</p>
+        </div>
+        <div class="detail-card reveal">
+          <span class="detail-icon">🥂</span>
+          <h3>The Reception</h3>
+          <p>
+            Springfield Manor<br/>
+            11836 Auburn Rd<br/>
+            Thurmont, MD 21788
+          </p>
+          <p class="detail-time">
+            Cocktail Hour · 5:00 PM – 6:00 PM<br/>
+            Dinner &amp; Reception · 6:00 PM – 10:00 PM
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP placeholder anchor -->
+  <div id="rsvp" style="height:0;"></div>
+  <div id="travel" style="height:0;"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#hero" class="footer-back-top">↑ Back to Top</a><br/>
+    <p>© 2026 by Noah &amp; Adriana Isabela</p>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
+
+  <script>
+    // ── Parallax ──
+    const parallaxElements = [
+      { el: document.getElementById('heroBg'),    speed: 0.35 },
+      { el: document.getElementById('bannerBg'),  speed: 0.4  },
+      { el: document.getElementById('quoteBg'),   speed: 0.4  },
+      { el: document.getElementById('detailsBg'), speed: 0.4  },
+    ];
+
+    function applyParallax() {
+      const scrollY = window.pageYOffset;
+      parallaxElements.forEach(({ el, speed }) => {
+        if (!el) return;
+        const rect = el.parentElement.getBoundingClientRect();
+        const offsetY = (rect.top + scrollY) * speed;
+        el.style.transform = `translateY(${scrollY * speed - offsetY * 0}px)`;
+
+        // Simpler approach for non-hero:
+        if (el.id !== 'heroBg') {
+          const sectionTop = el.parentElement.offsetTop;
+          const relativeScroll = scrollY - sectionTop + window.innerHeight;
+          el.style.transform = `translateY(${relativeScroll * -speed * 0.3}px)`;
+        } else {
+          el.style.transform = `translateY(${scrollY * speed}px)`;
+        }
+      });
+    }
+
+    window.addEventListener('scroll', applyParallax, { passive: true });
+    applyParallax();
+
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Reveal on scroll ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => observer.observe(r));
+
+    // ── Mobile menu ──
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // ── Lightbox ──
+    function openLightbox(item) {
+      const img = item.querySelector('img');
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
