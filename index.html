@@ -3,7 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noah John & Adriana-Isabela | 12.05.26</title>
+  <title>Noah & Adriana-Isabela Wedding | December 5, 2026</title>
+  <meta name="description" content="Join us as we celebrate the wedding of Noah Richard and Adriana-Isabela Melendez on December 5, 2026. RSVP, view wedding details, and explore things to do in Frederick, MD." />
+  <meta name="keywords" content="Noah Richard wedding, Adriana Isabela Melendez wedding, Noah and Adriana wedding, Frederick Maryland wedding, December 2026 wedding" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://noahandadrianaisabela.com/" />
+
+  <meta property="og:title" content="Noah & Adriana-Isabela Wedding | December 5, 2026" />
+  <meta property="og:description" content="Join us as we celebrate the wedding of Noah Richard and Adriana-Isabela Melendez on December 5, 2026 in Frederick, MD." />
+  <meta property="og:url" content="https://noahandadrianaisabela.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://noahandadrianaisabela.com/images/couple.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Noah & Adriana-Isabela Wedding | December 5, 2026" />
+  <meta name="twitter:description" content="Join us as we celebrate the wedding of Noah Richard and Adriana-Isabela Melendez on December 5, 2026 in Frederick, MD." />
+  <meta name="twitter:image" content="https://noahandadrianaisabela.com/images/couple.jpg" />
+
   <link rel="preconnect" href ="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -312,11 +328,10 @@
     .about-photo img {
       width: 100%;
       max-width: 520px;
-      height: 500px;
+      height: clamp(320px, 40vw, 620px);
       object-fit: cover;
       object-position: center top;
       display: block;
-      /* swap for your photo: src="images/couple.jpg" */
     }
 
     .about-photo::before {
@@ -424,14 +439,14 @@
     .gallery-grid .g-item:hover img { transform: scale(1.04); }
 
     /* Row heights */
-    .gallery-grid .g-item.half  { height: 320px; }
-    .gallery-grid .g-item.full  { grid-column: span 2; height: 380px; }
-    .gallery-grid .g-item.tall  { height: 480px; }
+    .gallery-grid .g-item.half  { height: clamp(200px, 28vw, 420px); }
+    .gallery-grid .g-item.full  { grid-column: span 2; height: clamp(240px, 32vw, 500px); }
+    .gallery-grid .g-item.tall  { height: clamp(300px, 38vw, 580px); }
 
     /* ── PARALLAX BANNER ── */
     #banner {
       position: relative;
-      height: 500px;
+      height: clamp(300px, 40vw, 600px);
       overflow: hidden;
     }
 
@@ -555,9 +570,9 @@
 
     .details-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 60px;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       text-align: left;
     }
@@ -750,9 +765,14 @@
         gap: 40px;
       }
 
-      .gallery-grid .g-item.half { height: 220px; }
-      .gallery-grid .g-item.full { height: 260px; }
-      .gallery-grid .g-item.tall { height: 320px; }
+      .gallery-grid .g-item.half { height: clamp(160px, 45vw, 260px); }
+      .gallery-grid .g-item.full { height: clamp(200px, 50vw, 300px); }
+      .gallery-grid .g-item.tall { height: clamp(240px, 55vw, 360px); }
+    }
+
+    @media (min-width: 1400px) {
+      .about-inner { max-width: 1300px; }
+      .gallery-grid { max-width: 1600px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -776,7 +796,7 @@
       <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeY7SpA51gyO4FJGoG95E5wFgPjgtzdvhIIL12Yrv_6zKXeWw/viewform?usp=dialog" target="_blank">RSVP</a></li>
       <li><a href="things-to-do.html">Things to Do</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#details">Wedding Details</a></li>
+      <li><a href="#details">Weekend Details</a></li>
       <li><a href="https://www.amazon.com/wedding/guest-view/2TU30ZR5R7V2T" target="_blank">Registry</a></li>
     </ul>
 
@@ -955,9 +975,22 @@
     <div class="details-bg" id="detailsBg"></div>
     <div class="details-overlay"></div>
     <div class="details-content">
-      <span class="section-label">Wedding Details</span>
+      <span class="section-label">Weekend Details</span>
       <h2>Celebration of Holy Matrimony</h2>
       <div class="details-grid">
+        <div class="detail-card reveal">
+          <span class="detail-icon">🥃</span>
+          <h3>Men's Night</h3>
+          <p>
+            The Richard Family Home<br/>
+            1806 Burgundy Dr<br/>
+            Fallston, MD
+          </p>
+          <p class="detail-time">
+            7:00 PM<br/>
+            Open to men in high school and above
+          </p>
+        </div>
         <div class="detail-card reveal">
           <span class="detail-icon">⛪</span>
           <h3>The Wedding Mass</h3>
